@@ -5,5 +5,6 @@ export const ROUTE_PATHS = {
   LOGIN: "/login",
   REGISTER: "/register",
   DASHBOARD: "/dashboard",
+  CONTACT: "/contact",
   NOTFOUND: "*",
 };

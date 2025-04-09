@@ -30,19 +30,19 @@ const Header = () => {
             Properties
           </Link>
           <Link
-            to="#"
+            to="/agents"
             className="text-gray-700 hover:text-indigo-600 transition"
           >
             Agents
           </Link>
           <Link
-            to="#"
+            to="/about"
             className="text-gray-700 hover:text-indigo-600 transition"
           >
             About
           </Link>
           <Link
-            to="#"
+            to="/contact"
             className="text-gray-700 hover:text-indigo-600 transition"
           >
             Contact
