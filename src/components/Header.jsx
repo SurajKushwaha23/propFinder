@@ -2,6 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal";
 
+const desktopNavigation = [
+  { id: 101, name: "Home", link: "/" },
+  { id: 102, name: "Properties", link: "/properties" },
+  { id: 103, name: "Agents", link: "/agents" },
+  { id: 104, name: "About", link: "/about" },
+  { id: 105, name: "Contact", link: "/contact" },
+];
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -9,44 +17,26 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="container mx-auto px-4 py-5 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center">
-          <span className="text-2xl font-bold text-indigo-600">PropFinder</span>
+          <span className="text-3xl font-extrabold text-indigo-600">
+            PropFinder
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link
-            to="/"
-            className="text-gray-700 hover:text-indigo-600 transition"
-          >
-            Home
-          </Link>
-          <Link
-            to="/properties"
-            className="text-gray-700 hover:text-indigo-600 transition"
-          >
-            Properties
-          </Link>
-          <Link
-            to="/agents"
-            className="text-gray-700 hover:text-indigo-600 transition"
-          >
-            Agents
-          </Link>
-          <Link
-            to="/about"
-            className="text-gray-700 hover:text-indigo-600 transition"
-          >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            className="text-gray-700 hover:text-indigo-600 transition"
-          >
-            Contact
-          </Link>
+          {desktopNavigation.map((item) => {
+            return (
+              <Link
+                to={item.link}
+                className="text-gray-700 font-semibold hover:text-indigo-600 transition"
+              >
+                {item.name}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Auth Buttons */}
@@ -56,7 +46,7 @@ const Header = () => {
               setAuthType("login");
               setIsAuthModalOpen(true);
             }}
-            className="px-4 py-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition"
+            className="px-4 py-2 font- cursor-pointer text-indigo-600 hover:bg-indigo-50 rounded-lg transition"
           >
             Login
           </button>
@@ -65,9 +55,9 @@ const Header = () => {
               setAuthType("register");
               setIsAuthModalOpen(true);
             }}
-            className="px-4 py-2 bg-indigo-600 text-white hover:bg-indigo-700 rounded-lg transition"
+            className="px-4 py-2 font-semibold bg-indigo-600 text-white hover:bg-indigo-700 rounded-lg cursor-pointer transition"
           >
-            Register
+            Get Started
           </button>
         </div>
 
