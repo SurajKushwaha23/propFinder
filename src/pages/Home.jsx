@@ -48,7 +48,7 @@ const featuredProperties = [
 
 const Home = () => {
   return (
-    <div>
+    <>
       <HeroSection />
 
       <div className="container mx-auto px-4 py-16">
@@ -206,7 +206,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

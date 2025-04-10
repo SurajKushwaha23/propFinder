@@ -11,6 +11,16 @@ const Agents = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState("all");
 
+  // Professional real estate agent photos
+  const agentImages = {
+    1: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    2: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    3: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    4: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    5: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+    6: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+  };
+
   const agents = [
     {
       id: 1,
@@ -21,7 +31,6 @@ const Agents = () => {
       location: "New York",
       rating: 4.9,
       dealsClosed: 245,
-      image: "https://randomuser.me/api/portraits/women/32.jpg",
       featured: true,
     },
     {
@@ -33,7 +42,7 @@ const Agents = () => {
       location: "San Francisco",
       rating: 4.8,
       dealsClosed: 182,
-      image: "https://randomuser.me/api/portraits/men/45.jpg",
+      featured: false,
     },
     {
       id: 3,
@@ -44,7 +53,6 @@ const Agents = () => {
       location: "Miami",
       rating: 4.7,
       dealsClosed: 134,
-      image: "https://randomuser.me/api/portraits/women/63.jpg",
       featured: true,
     },
     {
@@ -56,7 +64,7 @@ const Agents = () => {
       location: "Chicago",
       rating: 4.8,
       dealsClosed: 210,
-      image: "https://randomuser.me/api/portraits/men/22.jpg",
+      featured: false,
     },
     {
       id: 5,
@@ -67,7 +75,7 @@ const Agents = () => {
       location: "Boston",
       rating: 4.6,
       dealsClosed: 98,
-      image: "https://randomuser.me/api/portraits/women/44.jpg",
+      featured: false,
     },
     {
       id: 6,
@@ -78,9 +86,12 @@ const Agents = () => {
       location: "Austin",
       rating: 4.9,
       dealsClosed: 176,
-      image: "https://randomuser.me/api/portraits/men/33.jpg",
+      featured: false,
     },
-  ];
+  ].map((agent) => ({
+    ...agent,
+    image: agentImages[agent.id] || `https://i.pravatar.cc/300?img=${agent.id}`,
+  }));
 
   const locations = [
     "All",
@@ -115,8 +126,8 @@ const Agents = () => {
   });
 
   return (
-    <div className="pt-12 bg-gray-50">
-      <div className="container mx-auto">
+    <div className="py-12 bg-gray-50">
+      <div className="container mx-auto px-4">
         {/* Page Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
@@ -129,7 +140,7 @@ const Agents = () => {
         </div>
 
         {/* Search and Filter */}
-        <div className="mb-8 bg-indigo-600 shadow-md p-6">
+        <div className="mb-8 bg-white rounded-xl shadow-md p-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Search Bar */}
             <div className="relative">
@@ -199,17 +210,19 @@ const Agents = () => {
                 .map((agent) => (
                   <div
                     key={agent.id}
-                    className="bg-white rounded-xl shadow-md overflow-hidden"
+                    className="bg-white rounded-xl shadow-md overflow-hidden group hover:shadow-lg transition-all duration-300"
                   >
-                    <div className="flex flex-col md:flex-row">
-                      <div className="md:w-1/3">
+                    <div className="flex flex-col md:flex-row h-full">
+                      <div className="md:w-2/5 relative overflow-hidden">
                         <img
-                          className="w-full h-48 md:h-full object-cover"
+                          className="w-full h-64 md:h-full object-cover transition-transform duration-300 group-hover:scale-105"
                           src={agent.image}
                           alt={agent.name}
+                          loading="lazy"
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
-                      <div className="p-6 md:w-2/3">
+                      <div className="p-6 md:w-3/5">
                         <div className="flex justify-between items-start">
                           <div>
                             <h3 className="text-xl font-bold text-gray-800">
@@ -217,11 +230,9 @@ const Agents = () => {
                             </h3>
                             <p className="text-indigo-600">{agent.title}</p>
                           </div>
-                          {agent.featured && (
-                            <span className="px-2 py-1 text-xs font-semibold bg-indigo-100 text-indigo-800 rounded-full">
-                              Featured
-                            </span>
-                          )}
+                          <span className="px-2 py-1 text-xs font-semibold bg-indigo-100 text-indigo-800 rounded-full">
+                            Featured
+                          </span>
                         </div>
 
                         <div className="mt-4 flex items-center">
@@ -294,14 +305,16 @@ const Agents = () => {
               .map((agent) => (
                 <div
                   key={agent.id}
-                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
+                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group"
                 >
-                  <div className="relative">
+                  <div className="relative h-64 overflow-hidden">
                     <img
-                      className="w-full h-48 object-cover"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       src={agent.image}
                       alt={agent.name}
+                      loading="lazy"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     {agent.featured && (
                       <span className="absolute top-3 right-3 px-2 py-1 text-xs font-semibold bg-indigo-600 text-white rounded-full">
                         Featured
@@ -375,8 +388,8 @@ const Agents = () => {
         </div>
 
         {/* Become an Agent CTA */}
-        <div className="mt-16 bg-indigo-700 shadow-md overflow-hidden">
-          <div className="px-6 py-18 text-center">
+        <div className="mt-16 bg-indigo-700 rounded-xl shadow-md overflow-hidden">
+          <div className="px-6 py-12 text-center">
             <h2 className="text-2xl font-bold text-white mb-4">
               Want to Join Our Team?
             </h2>
