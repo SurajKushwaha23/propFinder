@@ -126,7 +126,7 @@ const SearchFilters = ({ onSearch }) => {
               step="10000"
               value={filters.priceRange[0]}
               onChange={(e) => handlePriceChange(e, 0)}
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+              className="w-full h-2 bg-indigo-300 rounded-lg appearance-none cursor-pointer"
             />
             <input
               type="range"
@@ -135,7 +135,7 @@ const SearchFilters = ({ onSearch }) => {
               step="10000"
               value={filters.priceRange[1]}
               onChange={(e) => handlePriceChange(e, 1)}
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+              className="w-full h-2 bg-indigo-300 rounded-lg appearance-none cursor-pointer"
             />
           </div>
         </div>

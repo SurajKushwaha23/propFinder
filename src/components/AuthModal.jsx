@@ -26,7 +26,7 @@ const AuthModal = ({ type, onClose, onSwitch }) => {
       <div className="bg-white rounded-lg w-full max-w-md relative">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+          className="absolute top-4 cursor-pointer right-4 text-gray-500 hover:text-gray-700"
         >
           <XMarkIcon className="h-6 w-6" />
         </button>

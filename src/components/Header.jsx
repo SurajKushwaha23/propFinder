@@ -1,14 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal";
-
-const desktopNavigation = [
-  { id: 101, name: "Home", link: "/" },
-  { id: 102, name: "Properties", link: "/properties" },
-  { id: 103, name: "Agents", link: "/agents" },
-  { id: 104, name: "About", link: "/about" },
-  { id: 105, name: "Contact", link: "/contact" },
-];
+import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
+import { desktopNavigation } from "../constants/data";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +11,35 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
+      {/* Top Header with Contact Info */}
+      <div className="bg-indigo-700 text-white">
+        <div className="container mx-auto px-4 py-2 flex flex-col md:flex-row justify-between items-center text-sm">
+          <div className="flex items-center space-x-8 mb-2 md:mb-0">
+            <a
+              href="tel:+18005551234"
+              className="flex items-center hover:text-indigo-200 transition"
+            >
+              <PhoneIcon className="h-4 w-4 mr-1" />
+              <span>+1 (800) 555-1234</span>
+            </a>
+            <a
+              href="mailto:info@propertyfinder.com"
+              className="flex items-center hover:text-indigo-200 transition"
+            >
+              <EnvelopeIcon className="h-4 w-4 mr-1" />
+              <span>info@propertyfinder.com</span>
+            </a>
+          </div>
+          <div className="flex items-center space-x-8">
+            <a href="#" className="hover:text-indigo-200 transition">
+              FAQ
+            </a>
+            <a href="#" className="hover:text-indigo-200 transition">
+              Support
+            </a>
+          </div>
+        </div>
+      </div>
       <div className="container mx-auto px-4 py-5 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center">
@@ -30,6 +53,7 @@ const Header = () => {
           {desktopNavigation.map((item) => {
             return (
               <Link
+                key={item.id}
                 to={item.link}
                 className="text-gray-700 font-semibold hover:text-indigo-600 transition"
               >
@@ -46,7 +70,7 @@ const Header = () => {
               setAuthType("login");
               setIsAuthModalOpen(true);
             }}
-            className="px-4 py-2 font- cursor-pointer text-indigo-600 hover:bg-indigo-50 rounded-lg transition"
+            className="px-4 py-2 font-semibold cursor-pointer text-indigo-600 hover:bg-indigo-50 rounded-lg transition"
           >
             Login
           </button>
