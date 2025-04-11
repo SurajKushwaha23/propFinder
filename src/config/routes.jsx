@@ -18,6 +18,9 @@ const Register = lazy(() => import("../pages/Register"));
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const Profile = lazy(() => import("../pages/Profile"));
 const Settings = lazy(() => import("../pages/Settings"));
+const Blog = lazy(() => import("../pages/Blog"));
+const BlogDetails = lazy(() => import("../pages/BlogDetails"));
+
 const NotFound = lazy(() => import("../pages/NotFound"));
 
 const AppRoutes = ({ isAuthenticated }) => {
@@ -32,6 +35,8 @@ const AppRoutes = ({ isAuthenticated }) => {
           <Route path="/property/:id" element={<PropertyDetails />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/agents" element={<Agents />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetails />} />
         </Route>
 
         {/* Auth routes with AuthLayout */}

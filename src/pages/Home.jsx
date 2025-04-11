@@ -22,6 +22,7 @@ const Home = () => {
           </div>
         </div>
         {/* Why Choose Us */}
+
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">
             Why Choose Us
@@ -93,6 +94,7 @@ const Home = () => {
             </div>
           </div>
         </div>
+
         {/* Testimonials */}
         <div className="">
           <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">

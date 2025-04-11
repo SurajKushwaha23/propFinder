@@ -248,6 +248,7 @@ export const desktopNavigation = [
   { id: 102, name: "Properties", link: "/properties" },
   { id: 103, name: "Agents", link: "/agents" },
   { id: 104, name: "About", link: "/about" },
+  { id: 106, name: "Blog", link: "/blog" },
   { id: 105, name: "Contact", link: "/contact" },
 ];
 
@@ -299,5 +300,71 @@ export const propertyCategories = [
     image:
       "https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     slug: "land-plots",
+  },
+];
+
+export const propertyBlogs = [
+  {
+    id: 1,
+    slug: "first-time-home-buyer-guide",
+    title: "First-Time Home Buyer's Guide: 10 Essential Tips",
+    excerpt:
+      "Navigating the real estate market for the first time can be overwhelming. Here's our comprehensive guide to help you make informed decisions.",
+    image:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    date: "May 15, 2023",
+    readTime: "5 min read",
+    author: "Sarah Johnson",
+    tags: ["Buying", "Tips", "Guide"],
+    content: `
+      <h2>Understanding Your Budget</h2>
+      <p>Before you start looking at properties, it's crucial to understand what you can afford...</p>
+      
+      <h2>Getting Pre-Approved</h2>
+      <p>A mortgage pre-approval gives you a clear picture of your budget and shows sellers you're serious...</p>
+      
+      <h2>Choosing the Right Location</h2>
+      <p>Consider factors like commute times, school districts, and future development plans...</p>
+    `,
+  },
+  {
+    id: 2,
+    slug: "investment-property-strategies",
+    title: "5 Proven Strategies for Investment Property Success",
+    excerpt:
+      "Learn how seasoned investors maximize returns and minimize risks in today's competitive real estate market.",
+    image:
+      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    date: "June 2, 2023",
+    readTime: "7 min read",
+    author: "Michael Chen",
+    tags: ["Investment", "Strategies", "Rental"],
+    content: `
+      <h2>Buy and Hold Strategy</h2>
+      <p>This long-term approach focuses on property appreciation and rental income...</p>
+      
+      <h2>Fix and Flip</h2>
+      <p>Identify undervalued properties, renovate them, and sell for profit...</p>
+    `,
+  },
+  {
+    id: 3,
+    slug: "investment-property-strategies",
+    title: "5 Proven Strategies for Investment Property Success",
+    excerpt:
+      "Learn how seasoned investors maximize returns and minimize risks in today's competitive real estate market.",
+    image:
+      "https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    date: "June 2, 2023",
+    readTime: "7 min read",
+    author: "Michael Chen",
+    tags: ["Investment", "Strategies", "Rental"],
+    content: `
+      <h2>Buy and Hold Strategy</h2>
+      <p>This long-term approach focuses on property appreciation and rental income...</p>
+      
+      <h2>Fix and Flip</h2>
+      <p>Identify undervalued properties, renovate them, and sell for profit...</p>
+    `,
   },
 ];
