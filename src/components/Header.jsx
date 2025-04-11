@@ -119,36 +119,18 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white py-2 px-4 shadow-md">
           <nav className="flex flex-col space-y-3">
-            <Link
-              to="/"
-              className="text-gray-700 hover:text-indigo-600 transition py-2"
-            >
-              Home
-            </Link>
-            <Link
-              to="/properties"
-              className="text-gray-700 hover:text-indigo-600 transition py-2"
-            >
-              Properties
-            </Link>
-            <Link
-              to="#"
-              className="text-gray-700 hover:text-indigo-600 transition py-2"
-            >
-              Agents
-            </Link>
-            <Link
-              to="#"
-              className="text-gray-700 hover:text-indigo-600 transition py-2"
-            >
-              About
-            </Link>
-            <Link
-              to="#"
-              className="text-gray-700 hover:text-indigo-600 transition py-2"
-            >
-              Contact
-            </Link>
+            {desktopNavigation.map((item) => {
+              return (
+                <Link
+                  key={item.id}
+                  to={item.link}
+                  className="text-gray-700 hover:text-indigo-600 transition py-2"
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+
             <div className="flex space-x-3 pt-2">
               <button
                 onClick={() => {
