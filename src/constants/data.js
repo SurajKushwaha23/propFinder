@@ -368,3 +368,10 @@ export const propertyBlogs = [
     `,
   },
 ];
+
+export const topNavigation = {
+  PHONENUMBER: "+91 123456789",
+  EMAIL: "info@propertyfinder.com",
+  FAQ: "FAQ",
+  SUPPORT: "Support",
+};

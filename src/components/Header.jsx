@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal";
 import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
-import { desktopNavigation } from "../constants/data";
+import { desktopNavigation, topNavigation } from "../constants/data";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,28 +14,28 @@ const Header = () => {
       {/* Top Header with Contact Info */}
       <div className="bg-indigo-700 text-white">
         <div className="container mx-auto px-4 py-2 flex flex-col md:flex-row justify-between items-center text-sm">
-          <div className="flex items-center space-x-8 mb-2 md:mb-0">
+          <div className="flex items-center space-x-2 md:space-x-8 lg:space-x-8  mb-2 md:mb-0">
             <a
               href="tel:+18005551234"
               className="flex items-center hover:text-indigo-200 transition"
             >
               <PhoneIcon className="h-4 w-4 mr-1" />
-              <span>+1 (800) 555-1234</span>
+              <span>{topNavigation.PHONENUMBER}</span>
             </a>
             <a
-              href="mailto:info@propertyfinder.com"
+              href={`mailto:${topNavigation.EMAIL}`}
               className="flex items-center hover:text-indigo-200 transition"
             >
               <EnvelopeIcon className="h-4 w-4 mr-1" />
-              <span>info@propertyfinder.com</span>
+              <span>{topNavigation.EMAIL}</span>
             </a>
           </div>
           <div className="flex items-center space-x-8">
             <a href="#" className="hover:text-indigo-200 transition">
-              FAQ
+              {topNavigation.FAQ}
             </a>
             <a href="#" className="hover:text-indigo-200 transition">
-              Support
+              {topNavigation.SUPPORT}
             </a>
           </div>
         </div>
