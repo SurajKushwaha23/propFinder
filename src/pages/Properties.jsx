@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropertyCard from "../components/PropertyCard";
 import SearchFilters from "../components/SearchFilters";
+import PropertyCardHorizontal from "../components/PropertyCardHorizontal";
 
 const allProperties = [
   {
@@ -87,14 +88,52 @@ const allProperties = [
       "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     featured: false,
   },
+  {
+    id: 7,
+    title: "Charming Cottage",
+    address: "303 Country Rd, Portland, OR",
+    price: 325000,
+    type: "sale",
+    bedrooms: 2,
+    bathrooms: 1,
+    area: 1500,
+    rating: 4.5,
+    image:
+      "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    featured: false,
+  },
+  {
+    id: 8,
+    title: "Charming Cottage",
+    address: "303 Country Rd, Portland, OR",
+    price: 325000,
+    type: "sale",
+    bedrooms: 2,
+    bathrooms: 1,
+    area: 1500,
+    rating: 4.5,
+    image:
+      "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    featured: false,
+  },
 ];
 
 const Properties = () => {
   const [properties, setProperties] = useState(allProperties);
   const [viewMode, setViewMode] = useState("grid");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [propertiesPerPage] = useState(6);
+
+  // Get current properties
+  const indexOfLastProperty = currentPage * propertiesPerPage;
+  const indexOfFirstProperty = indexOfLastProperty - propertiesPerPage;
+  const currentProperties = properties.slice(
+    indexOfFirstProperty,
+    indexOfLastProperty
+  );
+  const totalPages = Math.ceil(properties.length / propertiesPerPage);
 
   const handleSearch = (filters) => {
-    // In a real app, this would be an API call with the filters
     const filtered = allProperties.filter((property) => {
       // Filter by location
       if (
@@ -128,6 +167,7 @@ const Properties = () => {
       return true;
     });
     setProperties(filtered);
+    setCurrentPage(1);
   };
 
   return (
@@ -209,82 +249,14 @@ const Properties = () => {
           {/* Properties List */}
           {viewMode === "grid" ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {properties.map((property) => (
+              {currentProperties.map((property) => (
                 <PropertyCard key={property.id} property={property} />
               ))}
             </div>
           ) : (
             <div className="space-y-6">
-              {properties.map((property) => (
-                <div
-                  key={property.id}
-                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 flex flex-col md:flex-row"
-                >
-                  <div className="md:w-1/3">
-                    <img
-                      src={property.image}
-                      alt={property.title}
-                      className="w-full h-48 md:h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-6 md:w-2/3">
-                    <div className="flex justify-between items-start">
-                      <h3 className="text-xl font-semibold text-gray-800">
-                        {property.title}
-                      </h3>
-                      <div className="flex items-center">
-                        <svg
-                          className="h-4 w-4 text-yellow-400"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </svg>
-                        <span className="ml-1 text-sm text-gray-600">
-                          {property.rating}
-                        </span>
-                      </div>
-                    </div>
-
-                    <p className="text-gray-600 text-sm mt-1">
-                      {property.address}
-                    </p>
-
-                    <div className="flex justify-between items-center mt-4">
-                      <div>
-                        <span className="text-indigo-600 font-bold">
-                          ${property.price.toLocaleString()}
-                        </span>
-                        {property.type === "rent" && (
-                          <span className="text-gray-500 text-sm">
-                            {" "}
-                            / month
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex space-x-2">
-                        <span className="bg-gray-100 px-2 py-1 rounded text-xs text-gray-600">
-                          {property.bedrooms} Beds
-                        </span>
-                        <span className="bg-gray-100 px-2 py-1 rounded text-xs text-gray-600">
-                          {property.bathrooms} Baths
-                        </span>
-                        <span className="bg-gray-100 px-2 py-1 rounded text-xs text-gray-600">
-                          {property.area} sqft
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="mt-4 pt-4 border-t border-gray-100">
-                      <a
-                        href={`/property/${property.id}`}
-                        className="inline-block text-center bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg transition"
-                      >
-                        View Details
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              {currentProperties.map((property) => (
+                <PropertyCardHorizontal key={property.id} property={property} />
               ))}
             </div>
           )}
@@ -292,8 +264,18 @@ const Properties = () => {
           {/* Pagination */}
           {properties.length > 0 && (
             <div className="mt-12 flex justify-center">
-              <nav className="flex items-center space-x-2">
-                <button className="p-2 rounded-md border border-gray-300 text-gray-500 hover:bg-gray-100">
+              <nav className="flex items-center space-x-1">
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                  className={`p-2 rounded-md border ${
+                    currentPage === 1
+                      ? "border-gray-200 text-gray-400 cursor-not-allowed"
+                      : "border-gray-300 text-gray-500 hover:bg-gray-100"
+                  }`}
+                >
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -308,20 +290,35 @@ const Properties = () => {
                     />
                   </svg>
                 </button>
-                <button className="px-4 py-2 rounded-md bg-indigo-600 text-white">
-                  1
-                </button>
-                <button className="px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100">
-                  2
-                </button>
-                <button className="px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100">
-                  3
-                </button>
-                <span className="px-2 text-gray-500">...</span>
-                <button className="px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100">
-                  8
-                </button>
-                <button className="p-2 rounded-md border border-gray-300 text-gray-500 hover:bg-gray-100">
+
+                {/* Page numbers */}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (number) => (
+                    <button
+                      key={number}
+                      onClick={() => setCurrentPage(number)}
+                      className={`px-4 py-2 rounded-md border ${
+                        currentPage === number
+                          ? "bg-indigo-600 border-indigo-600 text-white"
+                          : "border-gray-300 text-gray-700 hover:bg-gray-100"
+                      }`}
+                    >
+                      {number}
+                    </button>
+                  )
+                )}
+
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                  className={`p-2 rounded-md border ${
+                    currentPage === totalPages
+                      ? "border-gray-200 text-gray-400 cursor-not-allowed"
+                      : "border-gray-300 text-gray-500 hover:bg-gray-100"
+                  }`}
+                >
                   <svg
                     className="w-5 h-5"
                     fill="none"
