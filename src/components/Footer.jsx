@@ -16,7 +16,7 @@ import {
 const Footer = () => {
   return (
     <>
-      <footer className="bg-gray-900 text-white pt-16 pb-8">
+      <footer className="bg-gray-900 text-white pt-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* About Company */}
@@ -148,9 +148,7 @@ const Footer = () => {
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 flex gap-2 text-sm mb-4 md:mb-0">
                 &copy; {new Date().getFullYear()} PropFinder. All rights
-                reserved. Crafted with{" "}
-                <HeartIcon className="w-6 h-6 text-red-400 animate-pulse" />
-                BY Suraj Kushwaha
+                reserved.
               </p>
               <div className="flex space-x-6">
                 <a
@@ -172,6 +170,15 @@ const Footer = () => {
                   Sitemap
                 </a>
               </div>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 py-2">
+            <div className="flex flex-col md:flex-row justify-center items-center">
+              <p className="text-gray-400 flex gap-2 text-sm mb-1">
+                Crafted with{" "}
+                <HeartIcon className="w-6 h-6 text-red-400 animate-pulse" />
+                BY Suraj Kushwaha
+              </p>
             </div>
           </div>
         </div>
