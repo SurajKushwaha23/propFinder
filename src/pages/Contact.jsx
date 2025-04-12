@@ -50,15 +50,15 @@ const Contact = () => {
     {
       icon: <MapPinIcon className="w-6 h-6 text-indigo-600" />,
       title: "Our Office",
-      details: "123 Property Lane, Suite 400, New York, NY 10001",
+      details: "23 Property Lane, Ghazipur 400 Uttar Pardesh, UP 100100",
       link: "#map",
       linkText: "View on map",
     },
     {
       icon: <PhoneIcon className="w-6 h-6 text-indigo-600" />,
       title: "Phone",
-      details: "+1 (555) 123-4567",
-      link: "tel:+15551234567",
+      details: "+91 123456789",
+      link: "tel:+91 123456789",
       linkText: "Call now",
     },
     {
@@ -134,13 +134,13 @@ const Contact = () => {
             </div>
 
             {/* Live Chat */}
-            <div className="bg-indigo-600 rounded-xl p-6 text-white">
+            <div className="bg-indigo-600 rounded-xl p-6">
               <div className="flex items-start">
                 <div className="bg-white bg-opacity-20 p-3 rounded-full mr-4">
-                  <ChatBubbleBottomCenterTextIcon className="w-6 h-6" />
+                  <ChatBubbleBottomCenterTextIcon className="w-6 h-6 text-indigo-700 " />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-1">
+                  <h3 className="text-lg text-white font-semibold mb-1">
                     Live Chat Support
                   </h3>
                   <p className="text-indigo-100 mb-3">
