@@ -375,3 +375,9 @@ export const topNavigation = {
   FAQ: "FAQ",
   SUPPORT: "Support",
 };
+
+export const header = {
+  LOGO: "PropFinder",
+  LOGIN: "Login",
+  REGISTER: "Get Started",
+};

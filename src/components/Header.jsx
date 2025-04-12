@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthModal from "./AuthModal";
 import { PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
-import { desktopNavigation, topNavigation } from "../constants/data";
+import { desktopNavigation, topNavigation, header } from "../constants/data";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +44,7 @@ const Header = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <span className="text-3xl font-extrabold text-indigo-600">
-            PropFinder
+            {header.LOGO}
           </span>
         </Link>
 
@@ -72,7 +72,7 @@ const Header = () => {
             }}
             className="px-4 py-2 font-semibold cursor-pointer text-indigo-600 hover:bg-indigo-50 rounded-lg transition"
           >
-            Login
+            {header.LOGIN}
           </button>
           <button
             onClick={() => {
@@ -81,7 +81,7 @@ const Header = () => {
             }}
             className="px-4 py-2 font-semibold bg-indigo-600 text-white hover:bg-indigo-700 rounded-lg cursor-pointer transition"
           >
-            Get Started
+            {header.REGISTER}
           </button>
         </div>
 
